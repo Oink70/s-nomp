@@ -4,14 +4,22 @@
 ## Script written in 2023 by Oink.vrsc@
 ## Script maintained by Oink.vrsc@
 
+# check if script is already running
+if [ -f /tmp/pbaascheck.pid ]
+then
+  echo "script is already running"
+  exit 1
+else
+  touch /tmp/pbaascheck.pid
+fi
 
 ## default settings
 VERUS=/home/verus/bin/verus      # complete path to (and including) the verus RPC client
 MAIN_CHAIN=VRSC                  # main hashing chain
 REDIS_NAME=verus                 # name you assigned the coin in `/home/pool/s-nomp/coins/*.json`
-REDIS_HOST=127.0.0.1             # If you run this script on another system, alter the IP address of your Redis server
+REDIS_HOST=localhost             # If you run this script on another system, alter the IP address of your Redis server
 REDIS_PORT=6379                  # If you use a different REDIS port, alter the port accordingly
-REDIS_PASS=examplepass
+#REDIS_PASS=examplepass           # Remove the # if no password
 
 ## Set script folder
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
@@ -61,9 +69,14 @@ if ! command -v redis-cli &>/dev/null ; then
        echo "Both redis-cli or keydb-cli not found. Please install one using your package manager."
        exit 1
     fi
-    REDIS_CLI="$(which keydb-cli) -h $REDIS_HOST -p $REDIS_PORT -a $REDIS_PASS"
+    REDIS_CLI="$(which keydb-cli) -h $REDIS_HOST -p $REDIS_PORT"
 else
-    REDIS_CLI="$(which redis-cli) -h $REDIS_HOST -p $REDIS_PORT -a $REDIS_PASS"
+    REDIS_CLI="$(which redis-cli) -h $REDIS_HOST -p $REDIS_PORT"
+fi
+
+# Check if a Redis password is provided
+if [[ ! -z "$REDIS_PASS" ]]; then
+    REDIS_CLI="$REDIS_CLI -a $REDIS_PASS"
 fi
 
 ## Can we connect to Redis?
@@ -72,6 +85,8 @@ then
   echo "cannot connect to redis server"
   exit 1
 fi
+
+echo "Successfully authenticated and connected to the Redis server."
 
 ## Is main chain active?
 count=$(${VERUS} -chain=$MAIN_CHAIN getconnectioncount 2>/dev/null)
