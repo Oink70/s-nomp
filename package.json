@@ -48,7 +48,7 @@
         "node-watch": "^0.5.8",
         "nonce": "^1.0.4",
         "pm2": "^6.0.13",
-        "redis": "^3.0.0",
+        "redis": "^5.9.0",
         "request": "^2.88.2",
         "stratum-pool": "git+https://github.com/Oink70/node-stratum-pool.git",
         "wallet-address-validator": "git+https://github.com/Oink70/wallet-address-validator.git#cf7835d1a569eed6fa98dd3d4aa4cd287bb59623",
