@@ -33,7 +33,7 @@
         "url": "https://github.com/s-nomp/s-nomp.git"
     },
     "dependencies": {
-        "async": "^2.6.1",
+        "async": "^3.2.6",
         "bignum": "^0.13.1",
         "bitgo-utxo-lib": "git+https://github.com/Oink70/bitgo-utxo-lib.git",
         "body-parser": "^2.2.0",
