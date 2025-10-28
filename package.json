@@ -52,7 +52,7 @@
         "request": "^2.88.0",
         "stratum-pool": "git+https://github.com/Oink70/node-stratum-pool.git",
         "wallet-address-validator": "git+https://github.com/Oink70/wallet-address-validator.git#cf7835d1a569eed6fa98dd3d4aa4cd287bb59623",
-        "jssha": "^2.3.1"
+        "jssha": "^3.3.1"
     },
     "engines": {
         "node": ">=8.11"
