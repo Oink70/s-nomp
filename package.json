@@ -43,7 +43,7 @@
         "dot": "^1.1.2",
         "express": "^5.1.0",
         "extend": "^3.0.2",
-        "mysql": "^2.16.0",
+        "mysql": "^2.18.1",
         "node-json-minify": "^3.0.0",
         "node-watch": "^0.5.8",
         "nonce": "^1.0.4",
