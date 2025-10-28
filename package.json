@@ -34,7 +34,7 @@
     },
     "dependencies": {
         "async": "^2.6.1",
-        "bignum": "^0.13.0",
+        "bignum": "^0.13.1",
         "bitgo-utxo-lib": "git+https://github.com/Oink70/bitgo-utxo-lib.git",
         "body-parser": "^2.2.0",
         "colors": "^1.4.0",
